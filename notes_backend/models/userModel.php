@@ -6,6 +6,10 @@ class UserModel {
 
   private $username;
   private $password;
+  private $nombre;
+  private $day_of_birth;
+  private $profile_img;
+  private $biography;
 
   public function getUsername()
   {
