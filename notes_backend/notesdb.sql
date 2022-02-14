@@ -3,12 +3,11 @@ CREATE SCHEMA tasks;
 USE tasks;
 
 --Table structure for table `users`
-
 CREATE TABLE users (
   user_id INT NOT NULL AUTO_INCREMENT,
-  user_name VARCHAR(255) UNIQUE,
-  nombre VARCHAR(255) ,
-  password VARCHAR(255) ,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  name VARCHAR(255),
+  password VARCHAR(255) NOT NULL,
   day_of_birth DATE ,
   profile_img VARCHAR(255) ,
   biography varchar(255) ,
@@ -27,25 +26,26 @@ create table followers(
 --Table structure for table `pendents`
 CREATE TABLE tasks (
   task_id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255)  ,
-  content TEXT  ,
+  title VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL ,
   created_at DATE  ,
   deadline DATE ,
-  user_id int ,
   priority VARCHAR(10),
+  user_id int ,
   likes INT,
-  public BOOLEAN  DEFAULT FALSE,
+  is_public BOOLEAN  DEFAULT FALSE,
+  $task_state BOOLEAN DEFAULT FALSE,
   PRIMARY KEY (task_id),
   FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 /* UPDATE tabla SET automoviles = automoviles + 1
-WHERE id = 1  */
+WHERE id = 1  notasldb*/
 
 create table comment(
   comment_id int not null auto_increment primary key,
   user_id int,
   task_id int,
-  content text,
+  content text not null,
   created_at datetime,
   foreign key (user_id) references users(user_id),
   foreign key (task_id) references tasks(task_id)
