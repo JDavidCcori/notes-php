@@ -17,6 +17,7 @@ function Input({setState, value, label, placeholder, type}){
            onChange={onChange}
            value= {value}
            placeholder={placeholder}
+           
            type={type}
           />
           <span className="icon is-small is-left">

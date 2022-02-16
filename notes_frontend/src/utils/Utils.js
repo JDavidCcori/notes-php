@@ -11,4 +11,10 @@ const sendData= async(URL,data)=>{
     return respuesta
 }
 
-export {sendData}
+const fechaActual = () => {
+    const now = new Date()
+    let fechareal = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+    return fechareal
+}
+
+export {sendData, fechaActual}
