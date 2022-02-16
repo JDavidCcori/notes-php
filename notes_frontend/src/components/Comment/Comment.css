@@ -1,0 +1,9 @@
+.comentario{
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.comentario:hover{
+    text-decoration: underline;
+}
