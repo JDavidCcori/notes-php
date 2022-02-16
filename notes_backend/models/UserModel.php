@@ -183,4 +183,49 @@
             }
             return $result;
         }
+
+        public function updateUser(){
+            try {
+                $query = "update users set name='{$this->getName()}',day_of_birth='{$this->getDayOfBirth()}',
+            biography='{$this->getBiography()}' where user_is='{$this->getUserId()}'";
+                return $this->connection->query($query);
+
+            }
+            catch (Exception $exception){
+                $exception->getMessage();
+            }
+        }
+
+        public function updateProfile(){
+            try {
+                $query = "update users set profile_img='{$this->getProfileImg()}' where user_id='{$this->getUserId()}'";
+                return $this->connection->query($query);
+            }
+            catch (Exception $exception){
+                $exception->getMessage();
+            }
+        }
+
+        public function updatePassword(){
+            try {
+                $query = "update users set password='{$this->getPassword()}' where user_is='{$this->getUserId()}'";
+                return $this->connection->query($query);
+            }
+            catch (Exception $exception){
+                $exception->getMessage();
+            }
+        }
+
+        public function getUserById($user_id){
+            try {
+                $query = "select biography,day_of_birth,email,name,profile_img,user_id from users  where user_id = $user_id";
+                return $this->connection->query($query);
+            }
+            catch (Exception $exception){
+                $exception->getMessage();
+            }
+        }
+
+
+
     }

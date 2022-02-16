@@ -6,7 +6,7 @@ require_once $db_dir . '/dataBaseConection.php';
 class TaskModel
 {
 
-    private $conection;
+    private $connection;
 
     private $title;
     private $task_id;
@@ -18,6 +18,14 @@ class TaskModel
     private $likes;
     private $is_public;
     private $task_state;
+
+    public function __CONSTRUCT(){
+        try {
+            $this->connection = DatabaseConnection::dbConnection();
+        }catch (Exception $exception){
+            die($exception->getMessage());
+        }
+    }
 
     /**
      * @return mixed
@@ -179,10 +187,22 @@ class TaskModel
         $this->task_state = $task_state;
     }
 
+    public function createTask(){
+        try {
+            $query = "INSERT INTO tasks(title, content, created_at, deadline, user_id, priority) 
+            values ('{$this->getTitle()}','{$this->getContent()}','{$this->getCreatedAt()}',
+                    '{$this->getDeadline()}','{$this->getUserId()}','{$this->getPriority()}')";
+            return $this->connection->query($query);
+        }
+        catch (Exception $exception) {
+            $exception->getMessage();
+        }
+    }
+
     public function getTaskByUser($user_id){
         try {
             $query = "select * from tasks where user_id = $user_id order by created_at DESC";
-            $tasks = $this->conection->query($query);
+            $tasks = $this->connection->query($query);
 
             return $tasks;
         }
@@ -191,5 +211,35 @@ class TaskModel
         }
     }
 
+    public function updateTask(){
+        try {
+            $query = "update tasks set title='{$this->getTitle()}',content='{$this->getContent()}',
+            deadline='{$this->getDeadline()}',priority='{$this->getPriority()}' where task_id='{$this->getTaskId()}'";
+           return $this->connection->query($query);
 
+        }
+        catch (Exception $exception){
+            $exception->getMessage();
+        }
+    }
+
+    public function hacerPublico(){
+        try {
+            $query = "update tasks set is_public='{$this->getIsPublic()}' where task_id='{$this->getTaskId()}'";
+            return $this->connection->query($query);
+        }
+        catch (Exception $exception){
+            $exception->getMessage();
+        }
+    }
+
+    public function getPublicTask(){
+        try {
+            $query = "select * from tasks ta inner join users us on ta.user_id=us.user_id where is_public = true order by created_at DESC";
+            return $this->connection->query($query);
+        }
+        catch (Exception $exception){
+            $exception->getMessage();
+        }
+    }
 }
