@@ -90,4 +90,21 @@ class TaskController
         print_r($json);
         return $json;
     }
+
+    public function deleteTask(){
+        $data = json_decode(file_get_contents("php://input"));
+
+        $this->taskModel->setTaskId($data->task_id);
+        $delete = $this->taskModel->deleteTask();
+        if($delete){
+            echo json_encode(
+                [
+                    "Seccess"=>true,
+                    "msg"=> "Tarea eliminada"
+                ]);
+        }else{
+            echo json_encode(["Seccess"=>false, "msg" => "Error al eliminar tu tarea"]);
+        }
+    }
+
 }
