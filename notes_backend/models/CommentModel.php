@@ -116,7 +116,7 @@ class CommentModel
 
     public function getComments($task_id){
         try {
-            $query = "select cm.content, cm.created_at, us.name, us.profile_img from comment cm 
+            $query = "select cm.content, cm.created_at,cm.user_id, us.name, us.profile_img from comment cm 
                         inner join users us on cm.user_id=us.user_id
                         where cm.task_id = $task_id order by created_at DESC";
             return $this->connection->query($query);

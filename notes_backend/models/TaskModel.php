@@ -242,4 +242,14 @@ class TaskModel
             $exception->getMessage();
         }
     }
+
+    public function deleteTask(){
+        try {
+            $query = "delete from tasks where task_id='{$this->getTaskId()}'";
+            return $this->connection->query($query);
+        }
+        catch (Exception $exception){
+            $exception->getMessage();
+        }
+    }
 }
