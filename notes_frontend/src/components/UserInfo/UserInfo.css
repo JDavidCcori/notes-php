@@ -1,0 +1,9 @@
+.avatar{
+    width: 3rem;
+    height: 3rem;
+    clip-path: circle(47%);
+}
+
+.boxComment{
+    margin-bottom: 0 !important;
+}
