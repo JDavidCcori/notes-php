@@ -14,6 +14,7 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
 
     const URL = "http://localhost:3000/api/v1/updatetask.php"
     const updateURL = "http://localhost:3000/api/v1/dopublic.php"
+    const deleteTaskURL = "http://localhost:3000/api/v1/deletetask.php"
 
 
     const onChange=(evento)=>{
@@ -43,6 +44,14 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
       console.log(publico)
     }
 
+    const deleteTask =async () => {
+      const data = {
+        'task_id': task_id
+      }
+      const deleteTask = await sendData(deleteTaskURL, data)
+      console.log(deleteTask)
+    }
+
     return (
         <>
             <div className="card m-2">
@@ -67,7 +76,7 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
               <div className=" ">
                
                 <button className="button is-warning ml-3 mr-3" onClick={()=> setOpen(true)}>Editar</button>
-                <button className="button is-danger mb-3">Eliminar</button>
+                <button className="button is-danger mb-3" onClick={deleteTask}>Eliminar</button>
         
               </div>
               {!!open &&
@@ -105,22 +114,22 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
                         placeholder="2022-02-14"
                         type="date"
                         />
-                        <div>
-                            <select onChange={onChange}  value={prioridad}>
+                        <div class="select">
+                            <select  onChange={onChange}  value={prioridad}>
                                 <option value="urgente">Urgente</option>
                                 <option value="medio">Medio</option>
                                 <option value="bajo">Bajo</option>
                             </select>
                         </div>
-                        <button className="button is-primary" onClick={enviarDatos}>Actualizar</button>
-                        <button className="button" onClick={()=> setOpen(false)}>Cancelar</button>
+                        <div className="mt-2">
+                          <button className="button is-primary mr-3" onClick={enviarDatos}>Actualizar</button>
+                          <button className="button" onClick={()=> setOpen(false)}>Cancelar</button>
+                        </div>
                     </div>
                 </Modal>
               }
             </div>
-        </>
-
-            
+        </>   
     )
 }
 

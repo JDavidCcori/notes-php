@@ -1,22 +1,20 @@
 import React from "react";
 import { UserInfo } from "../UserInfo/UserInfo";
-
+import './Comments.css'
 
 const Comments = ({content,profile_img,name,user_id}) => {
+    const imgServer = 'http://localhost:3000/userimg/'
+
     return(
         <>
-            <article className="message is-primary">
-                     
-                <div className="message-body">
-                      <UserInfo
-                     name={name}
-                     user_id={user_id}
-                     profile_img={profile_img}
-
-                      />
-                      <p>{content}</p>
-                </div>
-            </article>
+          <div className="coments_box">
+            <UserInfo
+            name={name}
+            user_id={user_id}
+            profile_img={`${imgServer}${profile_img}`}
+            />
+            <p>{content}</p>
+          </div>
         </>
     )
 }

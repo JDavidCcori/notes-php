@@ -2,3 +2,16 @@
     display: flex;
     align-items: center;
 }
+
+.img_size {
+    max-width: 13rem;
+    max-height: 13rem;
+    clip-path: circle(48%);
+    margin-right: 2rem;
+}
+
+.upload{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}

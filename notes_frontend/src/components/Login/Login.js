@@ -11,7 +11,6 @@ const viewport = {
 const Login=({getAuth})=>{
     
     const navigate = useNavigate()
-    const [error, setError] = useState(null)
     const [wait, setWait] = useState(null)
 
     const [email, setEmail]=React.useState({filed: '', valid: null})

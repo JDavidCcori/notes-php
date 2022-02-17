@@ -4,7 +4,7 @@ import { Comments } from "../Comments/Comments";
 import { Input } from "../Input/Input";
 import "./Comment.css"
 
-const Comment = ({ name, profile_img, task_id}) => {
+const Comment = ({task_id}) => {
 
     const [comentario, setComentario] = useState('')
     const [open, setOpen] = useState(false)
@@ -51,7 +51,7 @@ const Comment = ({ name, profile_img, task_id}) => {
             <p className="comentario" onClick={()=>{open? setOpen(false):setOpen(true)}}>Ver comentarios</p>
             {!! open && 
                comentarios.map((item)=>(
-                <Comments key={item.id} {...item}/>
+                <Comments key={item.id} {...item} />
                ))
             }
 

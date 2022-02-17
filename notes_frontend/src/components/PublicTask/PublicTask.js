@@ -5,17 +5,10 @@ import { Comment } from "../Comment/Comment";
 
 const PublicTask = ({title, content,deadline,task_id, name, profile_img,likes, user_id}) => {
 
+    const imgServer = 'http://localhost:3000/userimg/'
+
 
     const [open, setOpen] = useState(false)
-    const [like, setLike] = useState(likes)
-
-    const addLike = () => {
-        
-        console.log(likes)
-        const data={
-            "likes": like
-        }
-    }
 
 
     return(
@@ -25,21 +18,21 @@ const PublicTask = ({title, content,deadline,task_id, name, profile_img,likes, u
             {title}
           </p>
         </header>
-        <div className="card-content">
+        <div className="card-content ">
             <UserInfo
             name={name}
             user_id={user_id}
-            profile_img={profile_img}
+            profile_img={`${imgServer}${profile_img}`}
             />
           <div className="content">
               {content}
                     
           </div>
             <time >{deadline}</time>
-            <p>{like}</p>
+            <p>1000 Like</p>
         </div>
         <div className="card-content ">      
-          <button className="button is-light ml-3 mr-3 mb-3" onClick={addLike}>
+          <button className="button is-light ml-3 mr-3 mb-3" >
               <span className="icon">
                   <i className="far fa-thumbs-up"></i>
               </span>
@@ -54,10 +47,10 @@ const PublicTask = ({title, content,deadline,task_id, name, profile_img,likes, u
 
         {!!open &&  
             <Comment    
-            name={name}
-            user_id={user_id}
-            profile_img={profile_img}
-            task_id={task_id}
+                name={name}
+                user_id={user_id}
+                profile_img={profile_img}
+                task_id={task_id}
             />
            
         }

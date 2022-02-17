@@ -54,16 +54,17 @@ const TaskRegister= ()=>{
             placeholder="2022-02-14"
             type="date"
             />
-            <div>
+            <div class="select mb-2">
                 <select onChange={onChange} value={prioridad}>
                     <option value="urgente">Urgente</option>
                     <option value="medio">Medio</option>
                     <option value="bajo">Bajo</option>
                 </select>
             </div>
-            <button className="button is-primary" onClick={enviarDatos}>Agregar</button>
-            <button className="button " >Cancelar</button>
-            
+            <div>
+                <button className="button is-primary mr-3" onClick={enviarDatos}>Agregar</button>
+               
+            </div>
         </div>
 
 
