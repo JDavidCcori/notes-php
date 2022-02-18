@@ -114,7 +114,7 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
                         placeholder="2022-02-14"
                         type="date"
                         />
-                        <div class="select">
+                        <div className="select">
                             <select  onChange={onChange}  value={prioridad}>
                                 <option value="urgente">Urgente</option>
                                 <option value="medio">Medio</option>

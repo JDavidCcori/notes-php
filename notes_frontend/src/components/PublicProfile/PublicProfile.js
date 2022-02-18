@@ -68,7 +68,7 @@ const PublicProfile = () =>{
                 }
               </div>
               <div>
-                <button class="button is-link is-light is-small" onClick={handleFllow}>Seguir</button>
+                <button className="button is-link is-light is-small" onClick={handleFllow}>Seguir</button>
               </div>			
               </div>
             </div>		
