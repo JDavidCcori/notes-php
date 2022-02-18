@@ -1,7 +1,7 @@
 # Url del frontend y la API 
 
 ## Url para ver el frontend del proyecto
-### http://34.125.123.146/
+### http://34.125.123.146:3000/login
 
 ## Aquí se encuentran todos los endpoints del proyecto
 ### http://34.140.9.129/api/v1/
