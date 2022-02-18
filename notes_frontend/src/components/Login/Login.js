@@ -13,7 +13,7 @@ const Login=()=>{
     const navigate = useNavigate()
     const [wait, setWait] = useState(null)
 
-    const [email, setEmail]=React.useState({filed: '', valid: null})
+    const [email, setEmail]=React.useState('')
     const [password, setPassword]=React.useState({filed: '', valid: null})
     const URL='http://34.140.9.129/api/v1/login.php'
 
@@ -22,14 +22,16 @@ const Login=()=>{
     const enviarDatos = async (e)=>{
         e.preventDefault()
         setWait(true)
-
         const datos={
             "email": email,
             "password": password
         }
-        const login = await sendData(URL, datos)
-        console.log(login)
+        if (email === '' || password === '') {
+            setError('Los campos no pueden estar vacíos')
 
+        }   
+        const login = await sendData(URL, datos)
+        
         setError(login.error)
         setWait(false)
         if(login.Succes===true) {
@@ -41,6 +43,7 @@ const Login=()=>{
     return (
         <div className="tile is-justify-content-center is-align-items-center " style={viewport}>
         <form className="box">
+        <h3 className="title is-3">Login</h3>
             <Input
             setState={setEmail}
             value={email.filed}

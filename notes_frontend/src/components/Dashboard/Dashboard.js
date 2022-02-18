@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useGetUser } from "../../hooks/useGetUser";
 import { Header } from "../Header/Header";
 import { PublicTask } from "../PublicTask/PublicTask";
@@ -7,20 +8,24 @@ import { UserItem } from "../UserItem/UserItem";
 import './Dashboard.css'
 
 const Dashboard = () =>{
+    const navigate = useNavigate();
+    if (!sessionStorage.getItem('Sesion_de_usuario')) {
+      navigate('/login')
+    }
+    const session = JSON.parse(sessionStorage.getItem('Sesion_de_usuario'))
 
     const [tareas, setTareas] = useState([])
     const [tareasPublicas, setTareasPublicas] = useState([])
     const taskByUserurl = "http://34.140.9.129/api/v1/tasksbyuser.php"
     const publicTaskurl = "http://34.140.9.129/api/v1/getpublictasks.php"
     const getUSerUrl = "http://34.140.9.129/api/v1/getuserdates.php"
-    const session = JSON.parse(sessionStorage.getItem('Sesion_de_usuario'))
-
+    
     const userD = useGetUser(`${getUSerUrl}?user_id=${session.user_id}`)
     
-    const [refresh, setRefresh] = useState(false)
+    const [refresh, setRefresh] = useState(0)
 
     function makeRefresh(){
-      setRefresh(true)
+      setRefresh(+1)
     }
 
     useEffect(()=>{
@@ -28,7 +33,6 @@ const Dashboard = () =>{
         .then(response => response.json())
         .then(datos => {
             setTareas(datos.items)
-            console.log(datos.items)
         })
     },[refresh])
 

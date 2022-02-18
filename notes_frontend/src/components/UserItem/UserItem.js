@@ -4,7 +4,7 @@ import { Modal } from "../Modal/Modal";
 import { sendData } from "../../utils/Utils";
 
 
-const UserItem = ({title, content, deadline, priority, task_id}) => {
+const UserItem = ({title, content, deadline, priority, task_id,makeRefresh,is_public}) => {
 
     const [titulo, setTitulo] = useState(title)
     const [contenido, setContenido] = useState(content)
@@ -35,13 +35,21 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
         }
     }
 
+    let estadoTarea = null
+    if (is_public === '1') {
+      estadoTarea = '0'
+    }else{
+      estadoTarea = '1'
+    }
+
     const hacerPublico = async () => {
       const datos = {
         "task_id": task_id,
-        "is_public": true,
+        "is_public": estadoTarea,
       }
       const publico = await sendData(updateURL, datos)
-      console.log(publico)
+      console.log(publico,estadoTarea,is_public)
+      makeRefresh()
     }
 
     const deleteTask =async () => {
@@ -49,6 +57,7 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
         'task_id': task_id
       }
       const deleteTask = await sendData(deleteTaskURL, data)
+      makeRefresh()
       console.log(deleteTask)
     }
 
@@ -59,7 +68,7 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
                 <p className="card-header-title">
                   {title}
                 </p>
-                <button className="card-header-icon " onClick={hacerPublico} >
+                <button className="card-header-icon button is-info is-light " onClick={hacerPublico} >
                   <span className="icon">
                     <i className="fas fa-share-square" ></i>
 
@@ -71,7 +80,7 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
                     {content}
                   
                 </div>
-                  <time>Tu tarea vence el: {deadline}</time>
+                  <time>Tu tarea vence el: <span className="tag is-medium has-text-weight-bold">{deadline}</span></time>
               </div>
               <div className=" ">
                

@@ -1,5 +1,6 @@
 {
   "name": "notes_frontend",
+  "homepage": "http://34.125.123.146",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -43,6 +44,5 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
-  },
-  "homepage": "https://JDavidCcori.github.io/notes-php/tree/main/notes_frontend"
+  }
 }

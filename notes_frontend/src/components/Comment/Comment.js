@@ -9,7 +9,6 @@ const Comment = ({task_id}) => {
     const [comentario, setComentario] = useState('')
     const [open, setOpen] = useState(false)
     const [comentarios, setComentarios] = useState([])
-
     const session = JSON.parse(sessionStorage.getItem('Sesion_de_usuario'))
 
     const now = fechaActual()
@@ -34,6 +33,7 @@ const Comment = ({task_id}) => {
         .then(data=>{
             setComentarios(data.items)
             console.log(data)
+            setComentario('')
         })
     },[open])
 
@@ -50,7 +50,7 @@ const Comment = ({task_id}) => {
             <p className="comentario" onClick={()=>{open? setOpen(false):setOpen(true)}}>Ver comentarios</p>
             {!! open && 
                comentarios.map((item)=>(
-                <Comments key={item.id} {...item} />
+                <Comments key={item.id} {...item}/>
                ))
             }
 

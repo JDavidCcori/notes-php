@@ -23,7 +23,6 @@ function App() {
           <Route path='/userprofile/:id/:name' element={<UserProfile/>}/>
         </Routes>
       </BrowserRouter>
-
     </>
   );
 }

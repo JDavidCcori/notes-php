@@ -28,7 +28,8 @@ const PublicTask = ({title, content,deadline,task_id, name, profile_img,likes, u
               {content}
                     
           </div>
-            <time >Esta tarea vence el: {deadline}</time>
+          
+            <time >Esta tarea vence el: <span className="tag is-medium has-text-weight-bold">{deadline}</span></time>
             <p>10 Likes</p>
         </div>
         <div className="card-content ">      
