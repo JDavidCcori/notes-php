@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/notes-php/tree/main/notes_frontend/static/css/main.34c0fc3f.css",
+    "main.js": "/notes-php/tree/main/notes_frontend/static/js/main.0bdb6001.js",
+    "index.html": "/notes-php/tree/main/notes_frontend/index.html",
+    "main.34c0fc3f.css.map": "/notes-php/tree/main/notes_frontend/static/css/main.34c0fc3f.css.map",
+    "main.0bdb6001.js.map": "/notes-php/tree/main/notes_frontend/static/js/main.0bdb6001.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.34c0fc3f.css",
+    "static/js/main.0bdb6001.js"
+  ]
+}
