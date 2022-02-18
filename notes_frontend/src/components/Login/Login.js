@@ -8,14 +8,14 @@ const viewport = {
     height: '80vh',
 }
 
-const Login=({getAuth})=>{
+const Login=()=>{
     
     const navigate = useNavigate()
     const [wait, setWait] = useState(null)
 
     const [email, setEmail]=React.useState({filed: '', valid: null})
     const [password, setPassword]=React.useState({filed: '', valid: null})
-    const URL="http://localhost:3000/api/v1/login.php"
+    const URL='http://34.140.9.129/api/v1/login.php'
 
 
     const enviarDatos = async (e)=>{
@@ -28,7 +28,7 @@ const Login=({getAuth})=>{
         }
 
         const login = await sendData(URL, datos)
-        getAuth(login.Succes)
+       
         setWait(false)
         if(login.Succes===true) {
             sessionStorage.setItem('Sesion_de_usuario', JSON.stringify(login))
@@ -59,7 +59,6 @@ const Login=({getAuth})=>{
         <div className="field is-grouped">
               <div className="control">
                 <button className="button is-primary" disabled={wait} onClick={enviarDatos}>Ingresar</button>
-                
               </div>
               <div className="control">
                 <Link to="/registro" className="button is-link is-light">Registrarme</Link>

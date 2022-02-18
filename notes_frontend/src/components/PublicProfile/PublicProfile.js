@@ -10,14 +10,14 @@ const PublicProfile = () =>{
 
     const userParams = useParams()
     const session = JSON.parse(sessionStorage.getItem('Sesion_de_usuario'))
-    const imgServer = 'http://localhost:3000/userimg/'
-    const getUSerUrl = "http://localhost:3000/api/v1/getuserdates.php"
-    const addFollowUrl = "http://localhost:3000/api/v1/addfollow.php"
+    const imgServer = 'http://34.140.9.129/userimg/'
+    const getUSerUrl = "http://34.140.9.129/api/v1/getuserdates.php"
+    const addFollowUrl = "http://34.140.9.129/api/v1/addfollow.php"
 
 
     const [followers, setFollowers] = useState([])
 
-    const getFollowUrl = "http://localhost:3000/api/v1/getfollowers.php"
+    const getFollowUrl = "http://34.140.9.129/api/v1/getfollowers.php"
 
     const now = fechaActual()
 

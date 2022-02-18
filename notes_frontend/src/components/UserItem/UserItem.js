@@ -12,9 +12,9 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
     const [prioridad, setPrioridad] = useState(priority)
     const [open, setOpen] = useState(false)
 
-    const URL = "http://localhost:3000/api/v1/updatetask.php"
-    const updateURL = "http://localhost:3000/api/v1/dopublic.php"
-    const deleteTaskURL = "http://localhost:3000/api/v1/deletetask.php"
+    const URL = "http://34.140.9.129/api/v1/updatetask.php"
+    const updateURL = "http://34.140.9.129/api/v1/dopublic.php"
+    const deleteTaskURL = "http://34.140.9.129/api/v1/deletetask.php"
 
 
     const onChange=(evento)=>{

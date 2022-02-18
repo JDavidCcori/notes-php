@@ -3,7 +3,7 @@ import { UserInfo } from "../UserInfo/UserInfo";
 import './Comments.css'
 
 const Comments = ({content,profile_img,name,user_id}) => {
-    const imgServer = 'http://localhost:3000/userimg/'
+    const imgServer = 'http://34.140.9.129/userimg/'
 
     return(
         <>

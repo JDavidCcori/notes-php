@@ -5,7 +5,7 @@ import { Comment } from "../Comment/Comment";
 
 const PublicTask = ({title, content,deadline,task_id, name, profile_img,likes, user_id}) => {
 
-    const imgServer = 'http://localhost:3000/userimg/'
+    const imgServer = 'http://34.140.9.129/userimg/'
 
 
     const [open, setOpen] = useState(false)
@@ -51,6 +51,7 @@ const PublicTask = ({title, content,deadline,task_id, name, profile_img,likes, u
                 user_id={user_id}
                 profile_img={profile_img}
                 task_id={task_id}
+                openState={open}
             />
            
         }

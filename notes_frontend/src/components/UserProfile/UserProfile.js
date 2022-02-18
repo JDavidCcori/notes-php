@@ -9,9 +9,9 @@ const UserProfile = () =>{
 
     let likes = 5
     const userParams = useParams()
-    const imgServer = 'http://localhost:3000/userimg/'
-    const updateProfileImg = "http://localhost:3000/api/v1/updateprofile.php"
-    const getUSerUrl = "http://localhost:3000/api/v1/getuserdates.php"
+    const imgServer = 'http://34.140.9.129/userimg/'
+    const updateProfileImg = "http://34.140.9.129/api/v1/updateprofile.php"
+    const getUSerUrl = "http://34.140.9.129/api/v1/getuserdates.php"
 	
     const [foto, setFoto] = useState(null)
 

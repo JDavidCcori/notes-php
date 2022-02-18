@@ -12,7 +12,7 @@ const Registro = () => {
     const [email, setEmail] = React.useState({filed: '', valid: null})
     const [password, setPassword] = React.useState({filed: '', valid: null})
     const [password2, setPassword2] = React.useState({filed: '', valid: null})
-    const URL="http://localhost:3000/api/v1/user-register.php"
+    const URL="http://34.140.9.129/api/v1/user-register.php"
 
 
     const enviarDatos = async (e) => {

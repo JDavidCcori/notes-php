@@ -1,33 +1,31 @@
 import React, { useState } from "react";
-import { fechaActual, sendData } from "../../utils/Utils";
+import { sendData } from "../../utils/Utils";
 import { Input } from "../Input/Input";
 
 
-const TaskRegister= ()=>{
+const TaskRegister= ( {makeRefresh})=>{
     const [titulo, setTitulo] = useState("")
     const [contenido, setContenido] = useState("")
     const [fin, setFIn] = useState("")
     const [prioridad, setPrioridad] = useState("")
 
-    const URL = "http://localhost:3000/api/v1/registrotareas.php"
+    const URL = "http://34.140.9.129/api/v1/registrotareas.php"
     const session=JSON.parse(sessionStorage.getItem("Sesion_de_usuario"))
-
-    const now = fechaActual()
 
     const onChange=(evento)=>{
         setPrioridad(evento.target.value)
     }
 
-    const enviarDatos=async ()=>{
+    const enviarDatos = async ()=>{
         const datos = {
             "user_id": session.user_id,
             "title": titulo,
             "content": contenido,
-            "created_at": now,
             "deadline": fin,
             "priority": prioridad,
         }
         const tarea = await sendData(URL, datos)
+        makeRefresh(true)
         console.log(tarea)
     }
 

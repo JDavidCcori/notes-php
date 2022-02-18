@@ -10,20 +10,27 @@ const Dashboard = () =>{
 
     const [tareas, setTareas] = useState([])
     const [tareasPublicas, setTareasPublicas] = useState([])
-    const taskByUserurl = "http://localhost:3000/api/v1/tasksbyuser.php"
-    const publicTaskurl = "http://localhost:3000/api/v1/getpublictasks.php"
-    const getUSerUrl = "http://localhost:3000/api/v1/getuserdates.php"
+    const taskByUserurl = "http://34.140.9.129/api/v1/tasksbyuser.php"
+    const publicTaskurl = "http://34.140.9.129/api/v1/getpublictasks.php"
+    const getUSerUrl = "http://34.140.9.129/api/v1/getuserdates.php"
     const session = JSON.parse(sessionStorage.getItem('Sesion_de_usuario'))
 
     const userD = useGetUser(`${getUSerUrl}?user_id=${session.user_id}`)
     
+    const [refresh, setRefresh] = useState(false)
+
+    function makeRefresh(){
+      setRefresh(true)
+    }
+
     useEffect(()=>{
         fetch(`${taskByUserurl}?user_id=${session.user_id}`)
         .then(response => response.json())
         .then(datos => {
             setTareas(datos.items)
+            console.log(datos.items)
         })
-    },[])
+    },[refresh])
 
     useEffect(()=> {
       fetch(publicTaskurl)
@@ -31,7 +38,7 @@ const Dashboard = () =>{
       .then(datos => {
           setTareasPublicas(datos.items)
       })
-    },[])
+    },[refresh])
 
     return (
       <>
@@ -49,7 +56,7 @@ const Dashboard = () =>{
                        Agrega tus tareas
                       </div>
                     </article>
-                    <TaskRegister/>
+                    <TaskRegister makeRefresh={makeRefresh}/>
 
                   </div>
                
@@ -60,8 +67,8 @@ const Dashboard = () =>{
                     Mis tareas
                   </p>
                  {
-                     tareas.map((tarea) => (
-                         <UserItem key={tarea.id} {...tarea}/>
+                        tareas.map((tarea) => (
+                         <UserItem key={tarea.id} {...tarea} makeRefresh={makeRefresh}/>
                      ))
                  }
                 </article>
@@ -73,7 +80,7 @@ const Dashboard = () =>{
                   </p>
                 {
                   tareasPublicas.map((tarea) => (
-                    <PublicTask key={tarea.id} {...tarea}/>
+                    <PublicTask key={tarea.id} {...tarea} makeRefresh={makeRefresh}/>
                   ))
                 }
                 </article>

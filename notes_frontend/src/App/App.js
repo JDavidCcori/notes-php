@@ -13,17 +13,6 @@ import { PublicProfile } from '../components/PublicProfile/PublicProfile';
 
 function App() {
 
-
-  const [conected, setConected] = useState(null)
-
-  const getAuth = (value) => {
-    setConected(value)
-  }
-
-  useEffect(() => {
-
-  }, [conected])
-
   const initialDates = useGetUser()
   
   return (
@@ -33,7 +22,7 @@ function App() {
         <Routes>
           <Route path='/registro' element={<Registro/>}/>
           <Route path='/' element={<Login/>}/>
-          <Route path='/login' element={<Login getAuth={getAuth}/>}/>
+          <Route path='/login' element={<Login />}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path="/profile/:id/:name/*" element={<PublicProfile/>}>
           </Route>

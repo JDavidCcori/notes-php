@@ -8,7 +8,7 @@ const position = {
 
 function Header({name, img, id}) {
 
-  const imgServer = 'http://localhost:3000/userimg/'
+  const imgServer = 'http://34.140.9.129/userimg/'
 
 
     return(

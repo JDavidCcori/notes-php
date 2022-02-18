@@ -14,8 +14,8 @@ const Comment = ({task_id}) => {
 
     const now = fechaActual()
     
-    const atCommentUrl = "http://localhost:3000/api/v1/atcomment.php"
-    const getCommentUrl = "http://localhost:3000/api/v1/getcomment.php"
+    const atCommentUrl = "http://34.140.9.129/api/v1/atcomment.php"
+    const getCommentUrl = "http://34.140.9.129/api/v1/getcomment.php"
 
     const atComment =async () => {
         const data = {
@@ -24,9 +24,8 @@ const Comment = ({task_id}) => {
             "content": comentario,
             "created_at": now
         }
-        console.log(data)
+        setOpen(false)
         const cm = await sendData(atCommentUrl, data)
-        console.log(cm)
     }
 
     useEffect(()=>{
@@ -36,7 +35,7 @@ const Comment = ({task_id}) => {
             setComentarios(data.items)
             console.log(data)
         })
-    },[])
+    },[open])
 
     return(
         <div>
