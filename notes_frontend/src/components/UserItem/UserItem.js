@@ -71,7 +71,7 @@ const UserItem = ({title, content, deadline, priority, task_id}) => {
                     {content}
                   
                 </div>
-                  <time >{deadline}</time>
+                  <time>Tu tarea vence el: {deadline}</time>
               </div>
               <div className=" ">
                

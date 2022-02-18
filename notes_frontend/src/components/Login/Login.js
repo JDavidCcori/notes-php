@@ -17,6 +17,7 @@ const Login=()=>{
     const [password, setPassword]=React.useState({filed: '', valid: null})
     const URL='http://34.140.9.129/api/v1/login.php'
 
+    const [error, setError] = useState(null)
 
     const enviarDatos = async (e)=>{
         e.preventDefault()
@@ -26,16 +27,15 @@ const Login=()=>{
             "email": email,
             "password": password
         }
-
         const login = await sendData(URL, datos)
-       
+        console.log(login)
+
+        setError(login.error)
         setWait(false)
         if(login.Succes===true) {
             sessionStorage.setItem('Sesion_de_usuario', JSON.stringify(login))
             navigate('/dashboard')
         }
-        console.log(login)
-       
     }
 
     return (
@@ -55,6 +55,12 @@ const Login=()=>{
             placeholder="*********"
             type="password"
             />
+            {
+                error && 
+                <div className="notification is-danger">
+                {error}
+                </div>
+            }
 
         <div className="field is-grouped">
               <div className="control">

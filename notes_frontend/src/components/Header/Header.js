@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { UserInfo } from "../UserInfo/UserInfo";
 import './Header.css'
 
@@ -7,9 +8,14 @@ const position = {
 }
 
 function Header({name, img, id}) {
-
+  const navigate = useNavigate()
   const imgServer = 'http://34.140.9.129/userimg/'
 
+  function cerrarSession() {
+
+    sessionStorage.removeItem('Sesion_de_usuario');
+    navigate('/login')
+  }
 
     return(
       <nav className="navbar is-light navbar is-fixed-top">
@@ -19,6 +25,7 @@ function Header({name, img, id}) {
             profile_img={`${imgServer}${img}`}
             user_id={id}
           />
+          <button className="button mt-1 ml-3" onClick={cerrarSession}>Cerrar session</button>
         </div>
       </nav>
     )

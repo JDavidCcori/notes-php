@@ -30,8 +30,10 @@ const UserProfile = () =>{
            console.log(res)
        })
     }
-
+		
+	
 		const userD = useGetUser(`${getUSerUrl}?user_id=${userParams.id}`)
+
 
 		const [name, setName] = React.useState(userD.name)
 		const [dayOfBirth, setDayOfBirth] = React.useState(userD.day_of_birth)
