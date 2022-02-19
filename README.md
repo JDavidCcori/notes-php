@@ -1,5 +1,8 @@
 # Url del frontend y la API 
 
+## Manual para el usuario 
+https://drive.google.com/file/d/1ZjEdmF45OYnhvmePg-Zt-yzPXRskOVeA/view?usp=sharing
+
 ## Url para ver el frontend del proyecto
 ### http://34.125.123.146:3000/login
 
