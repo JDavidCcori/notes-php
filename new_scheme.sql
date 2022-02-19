@@ -3,8 +3,8 @@ CREATE SCHEMA tasks;
 USE tasks;
 
 --Table structure for table `users`
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
+--Creando la tabla usuario
 CREATE TABLE users (
   user_id INT NOT NULL AUTO_INCREMENT,
   user_name VARCHAR(255) UNIQUE,
@@ -16,21 +16,22 @@ CREATE TABLE users (
   PRIMARY KEY (user_id)
 );
 
+--Creando la tabla seguidores
 create table followers(
   follow_id int not null auto_increment primary key,
   sender_id int,
   receptor_id int,
   created_at datetime,
-  foreign key (sender_id) references users(user_id),
-  foreign key (receptor_id) references users(user_id)
+  foreign key (sender_id) references users(user_id), /* ...*/
+  foreign key (receptor_id) references users(user_id) /* ...*/
 );
 
---Table structure for table `pendents`
+--Creando la tabla tareas
 CREATE TABLE tasks (
   task_id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(255)  ,
   content TEXT  ,
-  created_at DATE  ,
+  created_at DATETIME  ,
   deadline DATE ,
   user_id int ,
   priority VARCHAR(10),
@@ -42,17 +43,18 @@ CREATE TABLE tasks (
 /* UPDATE tabla SET automoviles = automoviles + 1
 WHERE id = 1  */
 
+--Creando la tabla comentario
 create table comment(
   comment_id int not null auto_increment primary key,
   user_id int,
   task_id int,
   content text,
   created_at datetime,
-  foreign key (user_id) references users(user_id),
-  foreign key (task_id) references tasks(task_id)
+  foreign key (user_id) references users(user_id) on delete cascade on update cascade,
+  foreign key (task_id) references tasks(task_id) on delete cascade on update cascade
 );
 
-
+--Tabla no usada
 create table recover (
   recover_id int not null auto_increment primary key,
   user_id int,
